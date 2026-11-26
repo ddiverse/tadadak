@@ -25,7 +25,7 @@
   --cta-mid1: #494949;
   --cta-comp: #000000;
   --soft: #F1F1F1;
-  --tint: #2A2410;
+  --tint: #000000;
   --ok: #1f7a45;
   --ok-bg: #dff3e6;
   --bad: #E8452C;
@@ -239,7 +239,7 @@ kbd { font-family: var(--font-body); border: 1px solid var(--line); border-botto
 
 /* ===================== 홈페이지 (은영님 시안 바탕) =====================
    흰 바탕, 검정 글씨, 그래파이트 보조 글씨, 금색 카드(테두리 없음). 버튼에 마우스를 올리면 금색 → 파랑으로 밀려가요. */
-#intro { position: relative; --i-ink: #000000; --i-muted: #494949; --i-gold: #FFC000; --i-tint: #2A2410; --i-radius: 22px;
+#intro { position: relative; --i-ink: #000000; --i-muted: #494949; --i-gold: #FFC000; --i-tint: #000000; --i-radius: 22px;
   background: #FFFFFF; color: var(--i-ink); font-size: 1.3rem; line-height: 1.75; color-scheme: light; }
 #intro .i-band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(56px, 7vw, 96px); }
 #intro .i-wrap { max-width: 1120px; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 52px); }
@@ -1033,6 +1033,39 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
 .faq2-seg { display: inline-flex; flex-wrap: wrap; max-width: 100%; border-radius: 28px; }
 .faq2-seg button { flex: 0 0 auto; }
 @media (max-width: 640px) { .faq2-seg { gap: 2px; } .faq2-seg button { padding-inline: .7rem; } }
+/* v52 (2026-11-19) 76. 틀린 키가 Enter·Shift처럼 이름이 길면 한 줄로 작게, 상자는 옆으로 넓게 */
+.jamo.bad.long { width: auto; min-width: 3.5rem; padding: 0 .7rem; white-space: nowrap; font-size: calc(22 * var(--px)); }
+@media (max-width: 640px) { .jamo.bad.long { min-width: 2.7rem; padding: 0 .5rem; font-size: calc(17 * var(--px)); } }
+/* 77. 앱 설치 페이지 */
+.inst-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.inst-card { background: var(--soft); border-radius: 22px; padding: 28px 32px; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; }
+.inst-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.inst-ic svg { width: 30px; height: 30px; fill: none; stroke: #000; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.inst-card b { display: block; font-family: var(--font-display); font-weight: 700; font-size: calc(22 * var(--px)); line-height: 1.35; margin-bottom: 4px; }
+.inst-card p { margin: 0; font-size: calc(20 * var(--px)); color: var(--muted); }
+.inst-cta { display: grid; justify-items: center; gap: 12px; padding: 36px 24px; border-radius: 22px; background: var(--accent); text-align: center; }
+.inst-cta h2 { margin: 0; font-family: var(--font-display); font-size: calc(26 * var(--px)); }
+.inst-go { min-height: 64px; padding: 0 40px; border: 0; border-radius: 999px; color: #fff; font: 600 calc(22 * var(--px))/1.3 var(--font-body); cursor: pointer;
+  background: linear-gradient(90deg, #fff 0 50%, #000 50% 100%) no-repeat; background-size: 250% 100%; background-position: 100% 0; transition: background-position .35s, color .35s, box-shadow .35s; display: inline-flex; align-items: center; gap: 12px; }
+.inst-go:hover { background-position: 0 0; color: #000; box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+.inst-go[disabled] { cursor: default; }
+.inst-msg { margin: 0; font-size: calc(20 * var(--px)); font-weight: 600; max-width: 34em; }
+.inst-done { display: inline-flex; align-items: center; gap: 10px; min-height: 64px; padding: 0 32px; border-radius: 999px; background: #fff; font-weight: 700; font-size: calc(22 * var(--px)); }
+.inst-h2 { margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: calc(26 * var(--px)); }
+.inst-note { background: var(--soft); border-radius: 22px; padding: 24px 32px; }
+.inst-note b { font-size: calc(20 * var(--px)); }
+.inst-note p { margin: 6px 0 0; font-size: calc(20 * var(--px)); color: var(--muted); }
+/* 메뉴가 4개가 되어 휴대폰에서 한 줄에 들어가게 간격만 줄임 */
+@media (max-width: 760px) { .topnav { column-gap: 12px; } }
+@media (max-width: 420px) { .topnav { column-gap: 8px; } .topnav .nav-btn { font-size: .85rem; letter-spacing: -0.03em; } }
+@media (max-width: 640px) {
+  .inst-grid { grid-template-columns: 1fr; }
+  .inst-card { padding: 22px 24px; grid-template-columns: 48px 1fr; gap: 14px; }
+  .inst-ic { width: 48px; height: 48px; } .inst-ic svg { width: 26px; height: 26px; }
+  .inst-card b { font-size: calc(20 * var(--px)); } .inst-card p, .inst-msg, .inst-note p, .inst-note b { font-size: calc(18 * var(--px)); }
+  .inst-cta h2, .inst-h2 { font-size: calc(23 * var(--px)); }
+  .inst-go { width: 100%; justify-content: center; padding: 0 24px; } .inst-note { padding: 20px 24px; }
+}
 </style>
 
 <header class="topbar">
@@ -1042,6 +1075,7 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
       <button class="nav-btn" id="nav-guide" type="button"><span>이용방법</span></button>
       <button class="nav-btn" id="nav-faq" type="button"><span>자주 묻는 질문</span></button>
       <button class="nav-btn" id="nav-start" type="button"><span>내 연습방</span></button>
+      <button class="nav-btn" id="nav-install" type="button"><span>앱 설치</span></button>
     </nav>
     <div class="top-right">
     <button class="auth-btn" id="auth" type="button">로그인</button>
@@ -1085,6 +1119,7 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
       <ul class="i-menu">
         <li><a href="#" data-go="guide"><span>이용방법</span></a></li>
         <li><a href="#" data-go="faq"><span>자주 묻는 질문</span></a></li>
+        <li><a href="#" data-go="install"><span>앱 설치</span></a></li>
       </ul>
     </div>
   </header>
@@ -1328,7 +1363,7 @@ function go(screen) {
   if (isHelp(screen) && !isHelp(state.screen)) state.helpFrom = state.screen;
   state.screen = screen; render(); window.scrollTo(0, 0);
 }
-function isHelp(s) { return s === 'faq' || String(s).startsWith('guide'); }
+function isHelp(s) { return s === 'faq' || s === 'install' || String(s).startsWith('guide'); }
 function songById(id) { return SONGS.find(s => s.id === id) || EN_SONGS.find(s => s.id === id); }
 /* 한글 / 영문: 이름마다 마지막에 고른 쪽을 기억 */
 function getLang() { const m = store.settings.lang || {}; return (state.profile && m[state.profile.id]) || state.lang || 'ko'; }
@@ -1527,12 +1562,77 @@ function viewGuidePage() {
     stepList(g.steps));
 }
 
+/* ===================== 화면: 앱 설치 (77) ===================== */
+// 크롬·엣지가 "설치할 수 있어요" 하고 알려 주면 그때 받아 두었다가 [지금 설치하기]에서 씀
+// 홈페이지용: build-index.py가 웹앱 주소를 넣어요. [지금 설치하기]가 웹앱 주소의 설치 페이지를 새 창으로 열어요.
+const WEBAPP_URL = 'https://ddiverse.github.io/tadadak2/';
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; if (state.screen === 'install') render(); });
+window.addEventListener('appinstalled', () => { installPrompt = null; state.installMsg = 'done'; if (state.screen === 'install') render(); });
+function isStandalone() { return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true; }
+function isIOS() { return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+const INST_ICONS = {
+  desk: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><rect x="7" y="7.5" width="4" height="4" rx="1"/></svg>',
+  wifi: '<svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1.2"/><path d="M3 3l18 18"/></svg>',
+  wide: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 12h10M7 12l2.5-2.5M7 12l2.5 2.5M17 12l-2.5-2.5M17 12l-2.5 2.5"/></svg>',
+  sync: '<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4"/></svg>',
+};
+function instIcon(k) { const d = h('span', { class: 'inst-ic', 'aria-hidden': 'true' }); d.innerHTML = INST_ICONS[k]; return d; }
+function doInstall() {
+  if (WEBAPP_URL) { window.open(WEBAPP_URL + '?install=1', '_blank', 'noopener'); state.installMsg = 'moved'; render(); return; }
+  if (state.installBusy) return;          // 여러 번 눌러도 처음 한 번만
+  if (installPrompt) {
+    state.installBusy = true;
+    const p = installPrompt; installPrompt = null;
+    p.prompt();
+    p.userChoice.then((c) => { state.installBusy = false; state.installMsg = c.outcome === 'accepted' ? 'done' : 'cancel'; render(); })
+      .catch(() => { state.installBusy = false; render(); });
+    return;
+  }
+  state.installMsg = isIOS() ? 'ios' : 'other'; render();
+}
+function viewInstall() {
+  const installed = !WEBAPP_URL && (isStandalone() || state.installMsg === 'done');
+  const msgs = {
+    cancel: '설치를 취소했어요. 나중에 언제든 다시 누를 수 있어요.',
+    ios: '아이폰·아이패드는 아래 "아이폰·아이패드에서는" 순서대로 설치해 주세요.',
+    moved: '새 창에 설치 페이지가 열렸어요. 거기서 [지금 설치하기]를 한 번 더 눌러 주세요.',
+    other: '이 브라우저에서는 바로 설치할 수 없어요. 크롬이나 엣지로 타다닥을 열고 다시 눌러 주세요.',
+  };
+  const cta = installed
+    ? h('div', { class: 'inst-cta' }, h('h2', {}, '설치가 끝났어요'), h('span', { class: 'inst-done' }, '✓ 이미 설치되어 있어요'),
+        h('p', { class: 'inst-msg' }, '바탕화면(또는 시작 메뉴)의 타다닥 아이콘을 눌러 열어요.'))
+    : h('div', { class: 'inst-cta' }, h('h2', {}, '바탕화면에 타다닥을 두어요'),
+        h('button', { class: 'inst-go', type: 'button', onclick: doInstall }, '지금 설치하기', h('span', { 'aria-hidden': 'true' }, '→')),
+        state.installMsg && msgs[state.installMsg] ? h('p', { class: 'inst-msg', role: 'status' }, msgs[state.installMsg]) : null);
+  return h('div', { class: 'stack' },
+    h('div', {}, h('h1', { class: 'big-title' }, '앱으로 설치하기'),
+      h('p', { class: 'lead' }, '설치하지 않아도 모든 기능을 쓸 수 있어요. 바탕화면에 두고 쓰고 싶은 분만 설치하세요.')),
+    h('div', { class: 'inst-grid' },
+      [['desk', '아이콘 한 번으로 열려요', '주소를 치거나 즐겨찾기를 찾지 않아도 돼요. 바탕화면의 타다닥을 누르면 바로 열려요.'],
+       ['wifi', '인터넷이 끊겨도 연습해요', '한 번 설치하면 교실 인터넷이 느리거나 끊겨도 연습할 수 있어요.'],
+       ['wide', '화면이 넓고 깔끔해요', '주소창과 탭이 없어서 글씨가 더 크게 보이고, 다른 사이트로 잘못 넘어가지 않아요.'],
+       ['sync', '기록도 그대로, 새 기능도 저절로', '지금까지의 연습 기록을 그대로 써요. 타다닥이 새로 바뀌면 설치한 앱도 저절로 바뀌어요.']]
+        .map(([k, t, d]) => h('div', { class: 'inst-card' }, instIcon(k), h('div', {}, h('b', {}, t), h('p', {}, d))))),
+    cta,
+    h('h2', { class: 'inst-h2' }, '이렇게 설치돼요'),
+    stepList([
+      WEBAPP_URL ? ['[지금 설치하기]를 두 번 눌러요', '여기서 누르면 설치 페이지가 새 창으로 열려요. 거기서 한 번 더 눌러요.'] : ['[지금 설치하기]를 눌러요', '크롬이나 엣지에서 눌러 주세요.'],
+      ['작은 창에서 [설치]를 눌러요', '화면 위쪽에 "앱을 설치할까요?" 창이 떠요.'],
+      ['바탕화면 아이콘으로 열어요', '다음부터는 바탕화면(또는 시작 메뉴)의 타다닥 아이콘을 누르면 돼요.'],
+    ]),
+    h('div', { class: 'inst-note' }, h('b', {}, '아이폰·아이패드에서는'),
+      h('p', {}, '사파리로 타다닥을 열고, 아래쪽 공유 버튼(네모에 위 화살표)을 누른 뒤 [홈 화면에 추가]를 눌러요.')),
+    h('div', { class: 'inst-note' }, h('b', {}, '지우고 싶을 때'),
+      h('p', {}, '타다닥 앱을 열고 오른쪽 위 ⋯ 메뉴에서 [제거]를 눌러요. 앱을 지워도 홈페이지에서는 계속 쓸 수 있어요.')));
+}
+
 /* ===================== 화면: 자주 묻는 질문 (초안 문구) ===================== */
 const FORM_URL = 'https://forms.gle/2DgdYrgy8epWSbj16';
 const FAQ = [
   ['시작하기', [
     ['무료인가요?', '네, 무료예요. 누구나 바로 쓸 수 있어요.'],
-    ['설치해야 하나요?', '아니요. 크롬이나 엣지 같은 인터넷 브라우저에서 바로 열려요.'],
+    ['설치해야 하나요?', '아니요. 크롬이나 엣지 같은 인터넷 브라우저에서 바로 열려요. 바탕화면 아이콘으로 쓰고 싶으면 맨 위 [앱 설치]에서 설치할 수 있어요.'],
     ['회원가입이나 비밀번호가 필요한가요?', '필요 없어요. 이름만 고르면 바로 시작해요. 그래서 같은 컴퓨터를 쓰는 사람은 누구나 이름을 누를 수 있어요.'],
     ['어떤 순서로 연습하면 좋아요?', '자리연습 → 가사 타자연습 → 마우스 리듬게임 순서를 권해요.'],
   ]],
@@ -2076,7 +2176,7 @@ function viewJari() {
         boxes.replaceChildren(...it.groups.map(g => h('div', { class: 'jamo-group' }, g.map(x => {
           const i = k++;
           if (i < J.pos) return h('div', { class: 'jamo done' }, x.j);
-          if (i === J.pos && J.wrong) return h('div', { class: 'jamo bad shake', 'aria-label': '틀렸어요' }, J.wrong);
+          if (i === J.pos && J.wrong) return h('div', { class: 'jamo bad shake' + ([...J.wrong].length > 1 ? ' long' : ''), 'aria-label': '틀렸어요' }, J.wrong);
           return h('div', { class: 'jamo' + (i === J.pos ? ' cur' : '') }, x.j);
         }))));
         {   // 틀렸을 때도 눌러야 할 맞는 키와 손가락을 그대로 보여 줌
@@ -2579,7 +2679,7 @@ let cleanup = null;   // 화면을 떠날 때 정리할 일 (타이머, 키 입�
 function render() {
   if (cleanup) { const c = cleanup; cleanup = null; c(); }
   if (state.screen === 'names') state.screen = 'home';
-  if (!['intro', 'home', 'faq'].includes(state.screen) && !isHelp(state.screen) && !state.profile) state.screen = 'home';
+  if (!['intro', 'home', 'faq', 'install'].includes(state.screen) && !isHelp(state.screen) && !state.profile) state.screen = 'home';
   const onIntro = state.screen === 'intro';
   document.getElementById('intro').hidden = !onIntro;
   document.querySelector('header.topbar').hidden = onIntro;
@@ -2596,12 +2696,13 @@ function render() {
   auth.textContent = signedIn ? '로그아웃' : '로그인';
   const practiceScreens = ['home', 'songs', 'practice', 'result', 'records', 'jari-stages', 'jari', 'jari-result', 'rhythm-songs', 'rhythm-stage', 'rhythm', 'rhythm-result', 'guide-jari', 'guide-gasa', 'guide-rhythm'];
   document.getElementById('nav-start').setAttribute('aria-current', practiceScreens.includes(state.screen) ? 'page' : 'false');
-  const views = { home: viewHome, songs: viewSongs, practice: viewPractice, result: viewResult, records: viewRecords, guide: viewGuide, faq: viewFaq,
+  const views = { install: viewInstall, home: viewHome, songs: viewSongs, practice: viewPractice, result: viewResult, records: viewRecords, guide: viewGuide, faq: viewFaq,
     'guide-jari': viewGuidePage, 'guide-gasa': viewGuidePage, 'guide-rhythm': viewGuidePage,
     'jari-stages': viewJariStages, jari: viewJari, 'jari-result': viewJariResult,
     'rhythm-songs': viewRhythmSongs, 'rhythm-stage': viewRhythmStage, rhythm: viewRhythm, 'rhythm-result': viewRhythmResult };
   document.getElementById('nav-guide').setAttribute('aria-current', state.screen === 'guide' ? 'page' : 'false');
   document.getElementById('nav-faq').setAttribute('aria-current', state.screen === 'faq' ? 'page' : 'false');
+  document.getElementById('nav-install').setAttribute('aria-current', state.screen === 'install' ? 'page' : 'false');
   app.replaceChildren(views[state.screen]());
   if (window.taToTopUpdate) window.taToTopUpdate();
 }
@@ -2632,6 +2733,7 @@ function goHelp(screen) {
 }
 document.getElementById('nav-guide').addEventListener('click', () => goHelp('guide'));
 document.getElementById('nav-faq').addEventListener('click', () => goHelp('faq'));
+document.getElementById('nav-install').addEventListener('click', () => { state.installMsg = null; goHelp('install'); });
 // 홈페이지 버튼들
 document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); go(el.dataset.go); }));
 // 홈페이지: 휠을 내린 만큼 글·카드·그림이 아래에서 올라오며 나타나기 (요소마다 조금씩 순서대로). 움직임 줄이기 설정이면 하지 않음
