@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="ko">
 <meta charset="utf-8">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFC000">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>타다닥</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1036,6 +1040,66 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
 /* v52 (2026-11-19) 76. 틀린 키가 Enter·Shift처럼 이름이 길면 한 줄로 작게, 상자는 옆으로 넓게 */
 .jamo.bad.long { width: auto; min-width: 3.5rem; padding: 0 .7rem; white-space: nowrap; font-size: calc(22 * var(--px)); }
 @media (max-width: 640px) { .jamo.bad.long { min-width: 2.7rem; padding: 0 .5rem; font-size: calc(17 * var(--px)); } }
+/* ===== v54 새 기능 5가지 ===== */
+.nf-hint { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: #FFF4CC; border-radius: 22px; padding: 18px 24px; }
+.nf-hint p { margin: 0; font-size: calc(20 * var(--px)); font-weight: 600; }
+@media (max-width: 640px) { .nf-hint p { font-size: calc(18 * var(--px)); } }
+.menu.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px) { .menu.four { grid-template-columns: 1fr; } }
+.nf-pill { align-self: flex-start; background: rgba(255,255,255,.75); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: calc(16 * var(--px)); }
+@media (hover: hover) { .menu-btn.main:hover .nf-pill { background: rgba(255,255,255,.18); } }
+.nf-today { background: #FFF4CC; border-radius: 22px; padding: 24px; }
+@media (max-width: 640px) { .nf-today { padding: 18px; } }
+.nf-tag { display: inline-block; background: #000; color: var(--accent); border-radius: 999px; padding: 3px 14px; font-weight: 700; font-size: calc(15 * var(--px)); align-self: flex-start; }
+.nf-date { color: var(--muted); font-weight: 600; }
+.nf-today .target .ok, .nf-today .target .cur, .nf-today .target .typing { background: none; box-shadow: none; color: var(--ink); }   /* 오늘의 한 줄은 틀린 글자만 표시 */
+.nf-today .type-input { background: #fff; }
+.nf-done { background: #fff; border-radius: 16px; padding: 14px 18px; font-weight: 700; font-size: calc(20 * var(--px)); }
+.nf-star { color: var(--accent); -webkit-text-stroke: 1px #000; margin-right: 6px; }
+.btn.nf-white { background: #fff; }
+.btn.nf-line { background: #fff; border: 2px solid #000; font-weight: 700; }
+@media (hover: hover) { .btn.nf-line:hover, .btn.nf-white:not(:disabled):hover { background: #000; color: #fff; } }
+.nf-msg { font-weight: 700; }
+.nf-msg.plain { color: var(--muted); }
+.nf-q.need { box-shadow: 0 0 0 4px var(--accent); }
+.nf-qn { width: 34px; height: 34px; border-radius: 50%; background: var(--tint); color: var(--accent); display: inline-grid; place-items: center; font-family: var(--font-body); font-size: 1rem; margin-right: 10px; vertical-align: middle; }
+.nf-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+@media (max-width: 640px) { .nf-opts { grid-template-columns: 1fr; } }
+.nf-opt { min-height: 68px; border: 0; border-radius: 18px; background: #fff; font-weight: 700; font-size: calc(20 * var(--px)); color: var(--ink); }
+.nf-opt[aria-pressed="true"] { background: var(--accent); }
+@media (hover: hover) { .nf-opt:not([aria-pressed="true"]):hover { background: #000; color: #fff; } }
+.nf-reco { background: #FFF4CC; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px; }
+.nf-reco-name { font-family: var(--font-display); font-weight: 700; font-size: calc(30 * var(--px)); line-height: 1.3; margin: 10px 0 0; overflow-wrap: anywhere; }
+.nf-reco-why { margin: 0 0 10px; font-size: calc(20 * var(--px)); }
+.nf-timer strong { background: var(--accent); border-radius: 10px; padding: 0 10px; }
+.nf-sheet { position: relative; }
+.nf-from { margin: 0; color: var(--muted); font-weight: 700; }
+.nf-pause { position: absolute; inset: 0; background: rgba(255,255,255,.94); border-radius: 22px; display: grid; place-items: center; text-align: center; padding: 20px; z-index: 2; }
+.nf-pause[hidden] { display: none; }
+.nf-pause p { font-size: calc(24 * var(--px)); font-weight: 800; margin: 0 0 14px; }
+.nf-p { margin: 0; font-size: calc(20 * var(--px)); }
+@media (max-width: 640px) { .nf-p { font-size: calc(18 * var(--px)); } }
+.nf-ok { background: #FFF4CC; border-radius: 12px; padding: 10px 14px; font-weight: 700; margin: 0; }
+.nf-bad { background: var(--bad-bg); color: #8a1d0c; border-radius: 12px; padding: 10px 14px; font-weight: 700; margin: 0; }
+.nf-cert-box { background: #FFF4CC; border-radius: 22px; padding: 24px; }
+.nf-cert-wrap { display: flex; justify-content: center; }
+.nf-cert { width: min(100%, 560px); aspect-ratio: 1 / 1.414; background: #fff; border: 14px solid var(--accent); padding: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.12); container-type: inline-size; color: #000; }
+.nf-cert-in { height: 100%; border: 2px solid var(--accent); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 9cqw 7cqw 7cqw; position: relative; }
+.nf-c-title { font-family: var(--font-logo); font-size: 12cqw; letter-spacing: .18em; line-height: 1.2; padding-left: .18em; }
+.nf-c-name { margin-top: 9cqw; font-size: 6.2cqw; font-weight: 800; white-space: nowrap; }
+.nf-c-name span { font-size: 3.6cqw; color: var(--muted); font-weight: 600; margin-right: 2cqw; }
+.nf-c-body { margin: 8cqw 0 0; font-size: 3.9cqw; line-height: 1.8; }
+.nf-c-best { margin-top: 8cqw; background: #FFF4CC; border-radius: 3cqw; padding: 3cqw 6cqw; display: grid; gap: 1cqw; }
+.nf-c-best small { font-size: 3.2cqw; color: var(--muted); font-weight: 600; }
+.nf-c-best strong { font-size: 6.4cqw; font-weight: 800; }
+.nf-c-date { margin-top: auto; font-size: 3.8cqw; font-weight: 600; }
+.nf-c-seal { position: absolute; right: 7cqw; bottom: 5cqw; width: 17cqw; height: 17cqw; border-radius: 50%; background: var(--accent); display: grid; place-items: center; transform: rotate(-12deg); font-family: var(--font-logo); font-size: 4.4cqw; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body.nf-printing * { visibility: hidden !important; }
+  body.nf-printing .nf-cert, body.nf-printing .nf-cert * { visibility: visible !important; }
+  body.nf-printing .nf-cert { position: fixed; left: 0; top: 0; width: 210mm; height: 297mm; max-width: none; box-shadow: none; aspect-ratio: auto; }
+}
 /* 77. 앱 설치 페이지 */
 .inst-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .inst-card { background: var(--soft); border-radius: 22px; padding: 28px 32px; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; }
@@ -1504,7 +1568,8 @@ function viewHome() {
       h('div', { class: 'hello' },
         h('h1', {}, state.profile.name + '님, 반가워요!')),
       h('p', { class: 'lead hello-sub' }, '오늘은 무엇을 해 볼까요?')),
-    h('div', { class: 'menu' },
+    (nfOn() && nfSigned()) ? nfRecoButton() : null,   // 83. 오늘의 한 줄 뺌, 84. 추천은 로그인한 사람만 (2026-11-26)
+    h('div', { class: nfOn() ? 'menu four' : 'menu' },
       h('button', { class: 'menu-btn main', type: 'button', onclick: () => startOrPick('jari-stages') },
         h('span', { class: 'num' }, '1'),
         h('b', {}, '자리연습'), h('span', { class: 'desc' }, '손가락 자리를 익히고 낱말을 쳐 봐요'), h('span', { class: 'go' }, '시작하기 →')),
@@ -1513,7 +1578,9 @@ function viewHome() {
         h('b', {}, '노래가사 타자연습'), h('span', { class: 'desc' }, '민요와 동요 가사를 따라 쳐요'), h('span', { class: 'go' }, '시작하기 →')),
       h('button', { class: 'menu-btn main', type: 'button', onclick: () => startOrPick('rhythm-songs') },
         h('span', { class: 'num' }, '3'),
-        h('b', {}, '마우스 리듬게임'), h('span', { class: 'desc' }, '박자에 맞춰 클릭, 더블클릭, 드래그'), h('span', { class: 'go' }, '시작하기 →'))),
+        h('b', {}, '마우스 리듬게임'), h('span', { class: 'desc' }, '박자에 맞춰 클릭, 더블클릭, 드래그'), h('span', { class: 'go' }, '시작하기 →')),
+      nfOn() ? nfChallengeCard() : null),
+    nfOn() ? null : nfAppHint(),
     h('h2', { class: 'home-guide-title' }, '연습별 안내'),
     h('div', { class: 'help-row' },
       h('button', { class: 'help-btn', type: 'button', onclick: () => go('guide-jari') }, h('i', { 'aria-hidden': 'true' }, '1'), '자리연습 안내'),
@@ -1596,8 +1663,8 @@ function viewGuidePage() {
 
 /* ===================== 화면: 앱 설치 (77) ===================== */
 // 크롬·엣지가 "설치할 수 있어요" 하고 알려 주면 그때 받아 두었다가 [지금 설치하기]에서 씀
-// 홈페이지용: build-index.py가 웹앱 주소를 넣어요. [지금 설치하기]가 웹앱 주소의 설치 페이지를 새 창으로 열어요.
-const WEBAPP_URL = 'https://ddiverse.github.io/tadadak2/';
+// 홈페이지용 index에서는 build-index.py가 웹앱 주소를 넣어요. 그러면 [지금 설치하기]가 웹앱 주소의 설치 페이지를 새 창으로 열어요.
+const WEBAPP_URL = '';
 let installPrompt = null;
 window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; if (state.screen === 'install') render(); });
 window.addEventListener('appinstalled', () => { installPrompt = null; state.installMsg = 'done'; if (state.screen === 'install') render(); });
@@ -1790,6 +1857,7 @@ function viewRecords() {
       h('button', { class: 'tab', type: 'button', 'aria-pressed': String(tab === id), onclick: () => { state.recTab = id; render(); } }, name))),
     hasLang ? h('div', { class: 'row' }, langSeg()) : null,
     all.length ? h('div', { class: 'card stack' }, charts, recordTable(all.slice().reverse())) : h('p', { class: 'empty' }, '아직 이 연습의 기록이 없어요.'),
+    nfOn() ? nfRecordsExtra() : null,
     h('p', { class: 'note' }, '기록은 이 컴퓨터의 브라우저에만 저장돼요. 브라우저 기록을 지우면 그래프도 함께 지워져요.'));
 }
 
@@ -2749,15 +2817,17 @@ function render() {
   who.setAttribute('aria-label', signedIn ? state.profile.name + '님 내 기록 보기' : '');
   who.setAttribute('aria-current', state.screen === 'records' ? 'page' : 'false');
   auth.textContent = signedIn ? '로그아웃' : '로그인';
-  const practiceScreens = ['home', 'songs', 'practice', 'result', 'records', 'jari-stages', 'jari', 'jari-result', 'rhythm-songs', 'rhythm-stage', 'rhythm', 'rhythm-result', 'guide-jari', 'guide-gasa', 'guide-rhythm'];
+  const practiceScreens = ['home', 'songs', 'practice', 'result', 'records', 'jari-stages', 'jari', 'jari-result', 'rhythm-songs', 'rhythm-stage', 'rhythm', 'rhythm-result', 'guide-jari', 'guide-gasa', 'guide-rhythm', 'nf-reco', 'nf-ch', 'nf-ch-result', 'nf-cert'];
   document.getElementById('nav-start').setAttribute('aria-current', practiceScreens.includes(state.screen) ? 'page' : 'false');
   const views = { install: viewInstall, home: viewHome, songs: viewSongs, practice: viewPractice, result: viewResult, records: viewRecords, guide: viewGuide, faq: viewFaq,
     'guide-jari': viewGuidePage, 'guide-gasa': viewGuidePage, 'guide-rhythm': viewGuidePage,
     'jari-stages': viewJariStages, jari: viewJari, 'jari-result': viewJariResult,
-    'rhythm-songs': viewRhythmSongs, 'rhythm-stage': viewRhythmStage, rhythm: viewRhythm, 'rhythm-result': viewRhythmResult };
+    'rhythm-songs': viewRhythmSongs, 'rhythm-stage': viewRhythmStage, rhythm: viewRhythm, 'rhythm-result': viewRhythmResult,
+    'nf-reco': nfViewReco, 'nf-ch': nfViewChallenge, 'nf-ch-result': nfViewChResult, 'nf-cert': nfViewCert };
   document.getElementById('nav-guide').setAttribute('aria-current', state.screen === 'guide' ? 'page' : 'false');
   document.getElementById('nav-faq').setAttribute('aria-current', state.screen === 'faq' ? 'page' : 'false');
   document.getElementById('nav-install').setAttribute('aria-current', state.screen === 'install' ? 'page' : 'false');
+  document.getElementById('nav-install').hidden = isStandalone();   // 설치한 앱 안에서는 [앱 설치] 메뉴를 숨겨요 (2026-11-26)
   app.replaceChildren(views[state.screen]());
   if (window.taToTopUpdate) window.taToTopUpdate();
 }
@@ -2826,6 +2896,533 @@ document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click'
   window.taRevealUpdate = req;
   req();
 })();
+
+/* ===================== v54: 새 기능 5가지 (오늘의 한 줄 · 연습 추천 · 1분 도전 · 칭찬 상장 · 기록 옮기기) =====================
+   기준: new-features-plan.md (작동 기준 + 7장 예외 상황). 서버·외부 API 없음.
+   새 값은 store.settings 안에만 저장: challenge[이름id] = 1분 도전 최고 기록, todayDone[이름id] = 오늘의 한 줄 다 친 날 */
+/* 새 기능은 설치한 앱에서만 (2026-11-26 은영님). 깃허브 주소를 브라우저로 열면 숨기고 [앱 설치] 안내만 보여요.
+   깃허브가 아닌 곳(미리보기·내려받은 파일)에서는 확인할 수 있게 보여요. */
+function nfOn() { return !/github\.io$/.test(location.hostname) || isStandalone(); }
+function nfAppHint() {
+  return h('div', { class: 'nf-hint' }, h('p', {}, '앱으로 설치하면 1분 도전, 연습 추천, 칭찬 상장도 쓸 수 있어요.'),
+    h('button', { class: 'btn nf-white', type: 'button', onclick: () => { state.installMsg = null; goHelp('install'); } }, '앱 설치 보기'));
+}
+const NF_PROVERBS = ["가는 말이 고와야 오는 말이 곱다", "티끌 모아 태산", "낮말은 새가 듣고 밤말은 쥐가 듣는다", "세 살 버릇 여든까지 간다", "백지장도 맞들면 낫다", "천 리 길도 한 걸음부터", "콩 심은 데 콩 나고 팥 심은 데 팥 난다", "원숭이도 나무에서 떨어진다", "돌다리도 두들겨 보고 건너라", "등잔 밑이 어둡다", "소 잃고 외양간 고친다", "우물 안 개구리", "하늘이 무너져도 솟아날 구멍이 있다", "호랑이도 제 말 하면 온다", "발 없는 말이 천 리 간다", "아니 땐 굴뚝에 연기 날까", "같은 값이면 다홍치마", "누워서 떡 먹기", "식은 죽 먹기", "금강산도 식후경", "벼는 익을수록 고개를 숙인다", "시작이 반이다", "백 번 듣는 것이 한 번 보는 것만 못하다", "말 한마디로 천 냥 빚을 갚는다", "구슬이 서 말이라도 꿰어야 보배", "가는 날이 장날", "꿩 먹고 알 먹고", "도토리 키 재기", "바늘 도둑이 소도둑 된다", "사공이 많으면 배가 산으로 간다", "서당 개 삼 년이면 풍월을 읊는다", "열 번 찍어 안 넘어가는 나무 없다", "윗물이 맑아야 아랫물이 맑다", "작은 고추가 더 맵다", "쥐구멍에도 볕 들 날 있다", "하룻강아지 범 무서운 줄 모른다", "개천에서 용 난다", "고생 끝에 낙이 온다", "공든 탑이 무너지랴", "아는 길도 물어 가라", "낫 놓고 기역 자도 모른다", "될성부른 나무는 떡잎부터 알아본다", "마른하늘에 날벼락", "빈 수레가 요란하다", "무소식이 희소식", "웃는 얼굴에 침 못 뱉는다", "제 눈에 안경", "지렁이도 밟으면 꿈틀한다", "친구 따라 강남 간다", "칼로 물 베기", "하나를 보면 열을 안다", "형만 한 아우 없다", "말이 씨가 된다", "자라 보고 놀란 가슴 솥뚜껑 보고 놀란다", "찬물도 위아래가 있다", "콩 한 쪽도 나누어 먹는다", "비 온 뒤에 땅이 굳어진다", "남의 떡이 더 커 보인다", "개구리 올챙이 적 생각 못 한다", "쇠뿔도 단김에 빼라"];
+const NF_LINES = SONGS.filter(s => s.cat === 'jeollae' || s.cat === 'foreign').flatMap(s => s.lines.filter(l => l.length <= 16).map(l => [l, s.title]));
+const NF_RH_SEQ = ['click-slow', 'double-slow', 'drag-slow', 'mix-slow', 'mix-normal', 'mix-fast'];
+const NF_RH_STAGE = { click: '클릭만', double: '더블클릭만', drag: '드래그만', mix: '섞기' };
+const NF_RH_LEVEL = { slow: '1단계 느림', normal: '2단계 보통', fast: '3단계 빠름' };
+const NF = { reco: null, ch: null, chResult: null, guestToday: null, recMsg: null, certData: null };
+function nfSettings() { store.settings.challenge = store.settings.challenge || {}; store.settings.todayDone = store.settings.todayDone || {}; return store.settings; }
+function nfSave() { saveStore(); return storageOk; }
+const nfSigned = () => !!state.profile && state.profile.id !== 'guest';
+const nfBest = () => nfSigned() ? (nfSettings().challenge[state.profile.id] || null) : null;
+const nfPad = n => String(n).padStart(2, '0');
+const nfYmd = d => d.getFullYear() + '-' + nfPad(d.getMonth() + 1) + '-' + nfPad(d.getDate());
+function nfJosa(word, a, b) { const c = word.charCodeAt(word.length - 1) - 0xAC00; if (c < 0 || c > 11171) return word + b; return word + (c % 28 ? a : b); }
+const nfPress = {};
+function nfOnce(key, ms = 700) { const t = Date.now(); if (nfPress[key] && t - nfPress[key] < ms) return false; nfPress[key] = t; return true; }
+function nfDraw(el, target, typed, composing) {   // 앱의 compare()로 글자마다 색칠
+  const st = compare(target, typed, composing);
+  el.replaceChildren(...[...target].map((ch, i) => h('span', { class: st[i] + (ch === ' ' && st[i] === 'bad' ? ' space' : '') }, ch)));
+}
+/* 입력칸: 한글 조합(IME)이 끝난 뒤 Enter를 처리 */
+function nfBindTyping(inp, targetEl, getTarget, hooks) {
+  let composing = false, pendingEnter = false;
+  const draw = () => nfDraw(targetEl, getTarget(), inp.value, composing);
+  draw();
+  inp.addEventListener('compositionstart', () => { composing = true; });
+  inp.addEventListener('compositionend', () => { composing = false; setTimeout(() => { draw(); if (pendingEnter) { pendingEnter = false; hooks.onEnter(inp.value); } }, 0); });
+  inp.addEventListener('input', (e) => { if (hooks.onInput) hooks.onInput(e, composing); draw(); });
+  inp.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    if (e.isComposing || composing || e.keyCode === 229) { pendingEnter = true; setTimeout(() => { if (pendingEnter && !composing) { pendingEnter = false; hooks.onEnter(inp.value); } }, 30); return; }
+    hooks.onEnter(inp.value);
+  });
+  return { redraw: draw };
+}
+function nfConfirm(title, text, okLabel, cancelLabel, onOk, onCancel) {
+  const back = h('div', { class: 'modal-back' });
+  const close = () => { back.remove(); document.removeEventListener('keydown', onKey); };
+  const onKey = (e) => { if (e.key === 'Escape') { close(); onCancel && onCancel(); } };
+  back.append(h('div', { class: 'modal', role: 'dialog', 'aria-modal': 'true' }, h('h2', {}, title), h('p', {}, text),
+    h('div', { class: 'row modal-btns' },
+      h('button', { class: 'btn primary', type: 'button', onclick: () => { close(); onOk(); } }, okLabel),
+      h('button', { class: 'btn', type: 'button', onclick: () => { close(); onCancel && onCancel(); } }, cancelLabel))));
+  back.addEventListener('click', (e) => { if (e.target === back) { close(); onCancel && onCancel(); } });
+  document.addEventListener('keydown', onKey);
+  document.body.append(back);
+  setTimeout(() => { const b = back.querySelector('.btn'); if (b) b.focus(); }, 30);
+}
+
+/* ---------- 내 연습방: 오늘의 한 줄 + 연습 추천받기 + 1분 도전 카드 ---------- */
+function nfTodayIndex(d = new Date()) {
+  const days = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - new Date(2026, 0, 1)) / 86400000);
+  return ((days % 60) + 60) % 60;
+}
+function nfTodayDone() { const t = nfYmd(new Date()); return nfSigned() ? nfSettings().todayDone[state.profile.id] === t : NF.guestToday === t; }
+function nfTodayCard() {
+  const prov = NF_PROVERBS[nfTodayIndex()], d = new Date();
+  const card = h('section', { class: 'nf-today stack', 'aria-label': '오늘의 한 줄' },
+    h('div', { class: 'row' }, h('span', { class: 'nf-tag' }, '오늘의 한 줄'), h('span', { class: 'nf-date' }, (d.getMonth() + 1) + '월 ' + d.getDate() + '일 (' + '일월화수목금토'[d.getDay()] + ')')));
+  if (nfTodayDone()) {
+    card.append(h('div', { class: 'nf-done' }, h('span', { class: 'nf-star', 'aria-hidden': 'true' }, '★'), '좋아요! 오늘의 한 줄을 다 쳤어요. 내일은 새 속담이 나와요.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn nf-white', type: 'button', onclick: () => {
+        if (nfSigned()) { delete nfSettings().todayDone[state.profile.id]; nfSave(); } else NF.guestToday = null;
+        render(); setTimeout(() => { const i = document.getElementById('nf-t-input'); if (i) i.focus(); }, 30); } }, '한 번 더 치기')));
+    return card;
+  }
+  const target = h('div', { class: 'target', id: 'nf-t-target', 'aria-label': prov });
+  const inp = h('input', { class: 'type-input', id: 'nf-t-input', type: 'text', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', 'aria-label': '오늘의 한 줄 쳐 보기', placeholder: '여기에 쳐 보세요' });
+  const msg = h('p', { class: 'msg nf-msg', 'aria-live': 'polite' });
+  card.append(target, inp, msg);
+  const hooks = {
+    onInput(e, composing) {   // 끝까지 친 뒤 스페이스바도 Enter처럼
+      msg.textContent = '';
+      if (!composing && / $/.test(inp.value) && inp.value.replace(/\s+$/, '').length >= prov.length) hooks.onEnter(inp.value);
+    },
+    onEnter(v) {
+      if (!v.trim()) { msg.className = 'msg nf-msg plain'; msg.textContent = '위 속담을 보고 쳐 보세요.'; return; }
+      if (v.replace(/\s+$/, '') === prov) {
+        const t = nfYmd(new Date());
+        if (nfSigned()) { nfSettings().todayDone[state.profile.id] = t; nfSave(); } else NF.guestToday = t;
+        render();
+      } else { msg.className = 'msg nf-msg'; msg.textContent = '빨간 글자를 고쳐 보세요.'; }
+    },
+  };
+  nfBindTyping(inp, target, () => prov, hooks);
+  return card;
+}
+function nfChallengeCard() {
+  const best = nfBest();
+  return h('button', { class: 'menu-btn main', type: 'button', onclick: () => startOrPick('nf-ch') },
+    h('span', { class: 'num' }, '4'), h('b', {}, '1분 도전'), h('span', { class: 'desc' }, '1분 동안 동요 가사를 몇 줄 칠 수 있을까요?'),
+    best ? h('span', { class: 'nf-pill' }, '내 최고 ' + best.lines + '줄 · ' + best.cpm + '타') : null,
+    h('span', { class: 'go' }, '시작하기 →'));
+}
+function nfRecoButton() { return h('div', { class: 'row' }, h('button', { class: 'btn nf-line', type: 'button', onclick: () => { if (nfOnce('reco')) startOrPick('nf-reco'); } }, '✦ 연습 추천받기')); }
+
+/* ---------- 연습 추천 ---------- */
+function nfItem(kind, o = {}) {
+  if (kind === 'J') { const st = JARI_STAGES[o.n - 1]; return { name: '자리연습 ' + o.n + '단계 · ' + st.name, go: () => startJari(o.n, 'ko') }; }
+  if (kind === 'G') { const s = SONGS.find(x => x.id === o.song); if (!s) return null; const m = o.mode === 'long' ? '긴문단' : '짧은문단';
+    return { name: '가사 ' + m + ' · ' + s.title, go: () => { setLang('ko'); state.mode = o.mode; startPractice(s); } }; }
+  if (kind === 'R') { const s = RHYTHM_SONGS.find(x => x.id === o.song); if (!s || !NF_RH_STAGE[o.stage]) return null;
+    return { name: '리듬 · ' + NF_RH_STAGE[o.stage] + ' ' + NF_RH_LEVEL[o.level] + ' · ' + s.title, go: () => nfStartRhythm(o.song, o.stage, o.level) }; }
+  if (kind === 'CH') return { name: '1분 도전', go: () => go('nf-ch') };
+  if (kind === 'FREE') return { name: '오늘은 자유 연습', go: () => go('home') };
+}
+const NF_Q = {
+  0: [['J', { n: 1 }], ['G', { song: 'eodi', mode: 'short' }], ['R', { song: 'star', stage: 'click', level: 'slow' }]],
+  1: [['J', { n: 3 }], ['G', { song: 'arirang', mode: 'short' }], ['R', { song: 'star', stage: 'double', level: 'slow' }]],
+  2: [['J', { n: 6 }], ['G', { song: 'arirang', mode: 'long' }], ['R', { song: 'star', stage: 'mix', level: 'slow' }]],
+};
+function nfFromQuestions(exp, want) {
+  if (exp == null) return { ...nfItem('J', { n: 1 }), why: '처음부터 차근차근 시작해 봐요.' };
+  const [k, o] = NF_Q[exp][want];
+  const why = want === 2 ? '마우스 연습을 하고 싶다고 해서 이 연습을 골랐어요.' : '키보드를 ' + ['처음 쓴다고', '조금 써 봤다고', '잘 친다고'][exp] + ' 해서 이 연습을 골랐어요.';
+  return { ...(nfItem(k, o) || nfItem('J', { n: 1 })), why };
+}
+function nfFromRecords(recs) {
+  const last = recs[recs.length - 1];
+  const good = (thing, n, avg, word = '정확도') => nfJosa(thing, '을', '를') + ' ' + n + '판 하고 ' + word + '가 ' + avg + '%예요. 다음 단계로 가 봐요!';
+  const notyet = (thing, n) => nfJosa(thing, '을', '를') + ' ' + n + '판 했어요. ' + (3 - n) + '판만 더 하면 다음 단계예요.';
+  const low = (avg, word = '정확도') => word + '가 ' + avg + '%예요. 천천히 한 번 더 해 볼까요?';
+  const avgOf = (arr, f) => Math.round(arr.reduce((a, r) => a + f(r), 0) / arr.length);
+  let res = null;
+  if (last.type === 'jari') {
+    const n = last.stage, base = n === 6 ? 7 : 20, thing = '자리연습 ' + n + '단계';
+    const same = recs.filter(r => r.type === 'jari' && r.stage === n);
+    const avg = avgOf(same.slice(-3), r => base / (base + (r.miss || 0)) * 100);
+    if (same.length >= 3 && avg >= 90) res = n < 6 ? { ...nfItem('J', { n: n + 1 }), why: good(thing, same.length, avg) } : { ...nfItem('G', { song: 'arirang', mode: 'short' }), why: good(thing, same.length, avg).replace('다음 단계로', '이제 노래로') };
+    else res = { ...nfItem('J', { n }), why: same.length < 3 ? notyet(thing, same.length) : low(avg) };
+  } else if (recType(last) === 'gasa') {
+    const mode = last.mode === 'long' ? 'long' : 'short', s = SONGS.find(x => x.id === last.songId);
+    const same = recs.filter(r => recType(r) === 'gasa' && r.songId === last.songId && (r.mode === 'long' ? 'long' : 'short') === mode);
+    const avg = avgOf(same.slice(-3), r => r.acc || 0);
+    const thing = (s ? s.title : '이 노래') + ' ' + (mode === 'long' ? '긴문단' : '짧은문단');
+    if (same.length >= 3 && avg >= 90) res = mode === 'short' ? nfItem('G', { song: last.songId, mode: 'long' }) : nfItem('R', { song: 'star', stage: 'click', level: 'slow' });
+    else res = nfItem('G', { song: last.songId, mode });
+    if (res) res = { ...res, why: same.length < 3 ? notyet(thing, same.length) : avg >= 90 ? good(thing, same.length, avg) : low(avg) };
+  } else if (last.type === 'rhythm') {
+    const lv = last.level || 'slow', key = last.stage + '-' + lv;
+    const same = recs.filter(r => r.type === 'rhythm' && r.stage === last.stage && (r.level || 'slow') === lv);
+    const avg = avgOf(same.slice(-3), r => { const t = (r.hit || 0) + (r.miss || 0); return t ? r.hit / t * 100 : 0; });
+    const thing = ('리듬 ' + (NF_RH_STAGE[last.stage] || '') + ' ' + (NF_RH_LEVEL[lv] || '')).replace(/\s+/g, ' ').trim();
+    let i = NF_RH_SEQ.indexOf(key); if (i < 0) i = last.stage === 'mix' ? 3 : NF_RH_SEQ.indexOf(last.stage + '-slow');
+    if (same.length >= 3 && avg >= 90) {
+      if (i >= NF_RH_SEQ.length - 1) res = nfBest() ? { ...nfItem('FREE'), why: '모든 단계를 잘해요! 오늘은 하고 싶은 연습을 골라 보세요.' } : { ...nfItem('CH'), why: good(thing, same.length, avg, '성공률').replace('다음 단계로', '1분 도전으로') };
+      else { const [st, l] = NF_RH_SEQ[i + 1].split('-'); res = nfItem('R', { song: last.songId, stage: st, level: l }) || nfItem('R', { song: 'star', stage: st, level: l }); res = { ...res, why: good(thing, same.length, avg, '성공률') }; }
+    } else { res = nfItem('R', { song: last.songId, stage: NF_RH_STAGE[last.stage] ? last.stage : 'click', level: NF_RH_LEVEL[lv] ? lv : 'slow' }); if (res) res = { ...res, why: same.length < 3 ? notyet(thing, same.length) : low(avg, '성공률') }; }
+  }
+  return res || { ...nfItem('J', { n: 1 }), why: '오늘은 자리연습 1단계부터 해 볼까요?' };   // 노래·단계를 못 찾으면
+}
+function nfStartRhythm(songId, stage, level) {   // 리듬게임 노래·방법·빠르기를 골라 둔 채 시작 화면으로
+  state.rhythm = Object.assign({}, state.rhythm || {}, { songId, stage, level });
+  go('rhythm');
+}
+function nfInitReco() {
+  const recs = myRecords().filter(r => recLang(r) !== 'en');
+  NF.reco = recs.length ? { mode: 'card', pick: nfFromRecords(recs), byRecord: true } : { mode: 'ask', exp: null, want: null, need: [], needMsg: '' };
+}
+function nfViewReco() {
+  const R = NF.reco || (nfInitReco(), NF.reco);
+  const back = h('button', { class: 'back', type: 'button', onclick: () => go('home') }, '← 내 연습방');
+  if (R.mode === 'ask') {
+    const q = (n, title, key, opts) => h('section', { class: 'card nf-q' + (R.need.includes(key) ? ' need' : '') },
+      h('h2', {}, h('span', { class: 'nf-qn' }, String(n)), title),
+      h('div', { class: 'nf-opts', role: 'group', 'aria-label': title }, opts.map((o, i) =>
+        h('button', { class: 'nf-opt', type: 'button', 'aria-pressed': String(R[key] === i), onclick: () => { R[key] = i; R.need = R.need.filter(k => k !== key); R.needMsg = ''; render(); } }, o))));
+    return h('div', { class: 'stack' }, back,
+      h('div', {}, h('h1', {}, '연습 추천받기'), h('p', { class: 'lead' }, '두 가지만 골라 주세요. 알맞은 연습을 하나 골라 드릴게요.')),
+      q(1, '키보드를 써 본 적 있나요?', 'exp', ['처음이에요', '조금 써 봤어요', '잘 쳐요']),
+      q(2, '무엇을 하고 싶나요?', 'want', ['자판 익히기', '노래로 타자', '마우스 연습']),
+      h('p', { class: 'msg', 'aria-live': 'polite' }, R.needMsg || ''),
+      h('div', { class: 'row' },
+        h('button', { class: 'btn primary', type: 'button', onclick: () => {
+          R.need = ['exp', 'want'].filter(k => R[k] == null);
+          if (R.need.length === 2) R.needMsg = '두 질문을 골라 주세요. 잘 모르겠으면 [건너뛰기]를 눌러요.';
+          else if (R.need.length) R.needMsg = (R.need[0] === 'exp' ? '1번' : '2번') + ' 질문도 골라 주세요.';
+          if (!R.need.length) NF.reco = { mode: 'card', pick: nfFromQuestions(R.exp, R.want), byRecord: false };
+          render(); } }, '추천 보기'),
+        h('button', { class: 'btn', type: 'button', onclick: () => { NF.reco = { mode: 'card', pick: nfFromQuestions(null), byRecord: false }; render(); } }, '건너뛰기')),
+      h('p', { class: 'note' }, '건너뛰면 자리연습 1단계를 추천해요. 추천은 안내일 뿐이라 다른 연습도 마음대로 고를 수 있어요.'));
+  }
+  const p = R.pick;
+  return h('div', { class: 'stack' }, back,
+    h('div', {}, h('h1', {}, '연습 추천받기'), h('p', { class: 'lead' }, R.byRecord ? '내 기록을 보고 골랐어요.' : '고른 답으로 골랐어요.')),
+    h('section', { class: 'nf-reco', 'aria-live': 'polite' }, h('span', { class: 'nf-tag' }, '오늘은 이걸 해 볼까요?'),
+      h('p', { class: 'nf-reco-name' }, p.name), h('p', { class: 'nf-reco-why' }, p.why),
+      h('div', { class: 'row' },
+        h('button', { class: 'btn primary', type: 'button', onclick: () => { if (nfOnce('reco-go', 1000)) p.go(); } }, '시작하기'),
+        h('button', { class: 'btn nf-white', type: 'button', onclick: () => { NF.reco = { mode: 'ask', exp: null, want: null, need: [], needMsg: '' }; render(); } }, R.byRecord ? '질문으로 다시 고르기' : '다시 고르기'))));
+}
+
+/* ---------- 1분 도전 ---------- */
+function nfShuffle(n) { const a = [...Array(n).keys()]; for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const nfRunning = () => !!(NF.ch && NF.ch.started && !NF.ch.done && state.screen === 'nf-ch');
+function nfNewChallenge() { nfStopTimer(); NF.ch = { order: nfShuffle(NF_LINES.length), pos: 0, lines: 0, strokes: 0, started: false, done: false, used: 0, runFrom: 0, paused: false, tail: null, timer: null }; }
+function nfStopTimer() { if (NF.ch && NF.ch.timer) { clearInterval(NF.ch.timer); NF.ch.timer = null; } }
+const nfCur = () => NF_LINES[NF.ch.order[NF.ch.pos % NF.ch.order.length]];
+const nfNext = () => NF_LINES[NF.ch.order[(NF.ch.pos + 1) % NF.ch.order.length]];
+function nfLeft() { const C = NF.ch; if (!C.started) return 60000; return Math.max(0, 60000 - (C.used + (C.paused ? 0 : Date.now() - C.runFrom))); }
+function nfViewChallenge() {
+  if (!NF.ch || NF.ch.done) nfNewChallenge();
+  const C = NF.ch, best = nfBest();
+  const el = {
+    time: h('strong', {}, '1:00'), lines: h('strong', {}, '0줄'), cpm: h('strong', {}, '0'), bar: h('i', { style: 'width:100%' }),
+    from: h('p', { class: 'nf-from' }, nfCur()[1]), target: h('div', { class: 'target' }),
+    inp: h('input', { id: 'type-input', class: 'type-input', type: 'text', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', 'aria-label': '여기에 가사를 치세요' }),
+    msg: h('p', { class: 'msg nf-msg plain', 'aria-live': 'polite' }, '▶ 첫 글자를 치면 1분 시계가 움직여요.'),
+    next: h('span', {}, nfNext()[0]),
+    pause: h('div', { class: 'nf-pause', hidden: true }, h('div', {}, h('p', {}, '잠깐 멈췄어요.'), h('button', { class: 'btn primary', type: 'button', onclick: () => C.resume() }, '이어서 하기'))),
+  };
+  const update = () => {
+    const left = nfLeft(), sec = Math.ceil(left / 1000);
+    el.time.textContent = sec >= 60 ? '1:00' : '0:' + nfPad(sec);
+    el.lines.textContent = C.lines + '줄'; el.cpm.textContent = C.strokes;
+    el.bar.style.width = (left / 600) + '%';
+  };
+  let fresh = true;
+  const finishLine = (t) => {
+    const target = nfCur()[0];
+    for (let i = 0; i < target.length; i++) if (t[i] === target[i]) C.strokes += strokes(target[i]);
+    if (t === target) C.lines++;
+    C.tail = t.slice(-1); C.pos++;
+    if (C.pos % C.order.length === 0) C.order = nfShuffle(NF_LINES.length);   // 다 치면 다시 섞어서
+    el.from.textContent = nfCur()[1]; el.next.textContent = nfNext()[0]; el.msg.textContent = '';
+    el.inp.blur(); el.inp.value = ''; fresh = true;   // 앞 줄 끝 글자가 새 줄에 남지 않게
+    setTimeout(() => { if (!C.done) el.inp.focus(); ty.redraw(); }, 0);
+    ty.redraw(); update();
+  };
+  const tryFinish = (v, byEnter) => {
+    const target = nfCur()[0], t = v.replace(/\s+$/, '');
+    if (!t) return;
+    if (t.length < target.length) { if (byEnter) { el.msg.className = 'msg nf-msg plain'; el.msg.textContent = '줄 끝까지 친 뒤 Enter를 눌러요.'; } return; }
+    finishLine(t);
+  };
+  const end = () => {
+    C.done = true; nfStopTimer(); el.inp.disabled = true;
+    const target = nfCur()[0], t = el.inp.value;   // 치던 줄도 맞게 친 글자는 타수에
+    for (let i = 0; i < Math.min(t.length, target.length); i++) if (t[i] === target[i]) C.strokes += strokes(target[i]);
+    const prev = nfBest(), now = { lines: C.lines, cpm: C.strokes, date: Date.now() };
+    const better = !prev || now.lines > prev.lines || (now.lines === prev.lines && now.cpm > prev.cpm);
+    let saved = null;
+    if (nfSigned() && better) { nfSettings().challenge[state.profile.id] = now; saved = nfSave(); }
+    NF.chResult = { ...now, prev, better, saved };
+    state.screen = 'nf-ch-result'; render(); window.scrollTo(0, 0);
+  };
+  const tick = () => { if (C.paused || C.done) return; update(); if (nfLeft() <= 0) end(); };
+  const ty = nfBindTyping(el.inp, el.target, () => nfCur()[0], {
+    onInput(e, composing) {
+      const inp = el.inp, target = nfCur()[0];
+      if (fresh && C.tail && inp.value.length >= 2 && inp.value[0] === C.tail && inp.value[0] !== target[0] && target.startsWith(inp.value.slice(1, -1))) inp.value = inp.value.slice(1);
+      if (inp.value.length >= 3) fresh = false;
+      if (!C.started && inp.value.length) { C.started = true; C.runFrom = Date.now(); el.msg.textContent = ''; C.timer = setInterval(tick, 100); }
+      if (!composing && / $/.test(inp.value) && inp.value.replace(/\s+$/, '').length >= target.length) tryFinish(inp.value, false);
+    },
+    onEnter(v) { tryFinish(v, true); },
+  });
+  C.pause = () => { if (!C.started || C.done || C.paused) return; C.used += Date.now() - C.runFrom; C.paused = true; };
+  C.resume = () => { if (!C.paused) return; C.paused = false; C.runFrom = Date.now(); el.pause.hidden = true; el.inp.focus(); };
+  C.showPause = () => { if (C.paused && !C.done) el.pause.hidden = false; };
+  cleanup = () => { nfStopTimer(); };
+  update(); setTimeout(() => el.inp.focus(), 50);
+  return h('div', { class: 'stack' },
+    h('button', { class: 'back', type: 'button', onclick: () => go('home') }, '← 내 연습방'),
+    h('div', {}, h('h1', {}, '1분 도전'), h('p', { class: 'lead' }, '동요 가사가 한 줄씩 나와요. 1분 동안 몇 줄 칠 수 있는지 도전해 보세요.')),
+    h('div', { class: 'stats' },
+      h('div', { class: 'stat nf-timer' }, h('small', {}, '남은 시간'), el.time),
+      h('div', { class: 'stat' }, h('small', {}, '맞힌 줄'), el.lines),
+      h('div', { class: 'stat' }, h('small', {}, '타수 (1분)'), el.cpm),
+      h('div', { class: 'stat' }, h('small', {}, '내 최고'), h('strong', {}, best ? best.lines + '줄' : '-'))),
+    h('div', { class: 'progress', 'aria-hidden': 'true' }, el.bar),
+    h('div', { class: 'sheet stack short-sheet nf-sheet' }, el.from, el.target, el.inp, el.msg, h('div', { class: 'next-line' }, h('small', {}, '다음 줄'), el.next), el.pause),
+    h('p', { class: 'hint' }, h('span', {}, '줄 끝까지 치고 Enter나 스페이스바를 누르면 다음 줄이 나와요. 틀린 글자 없이 친 줄이 "맞힌 줄"이에요.' + (nfSigned() ? '' : ' 이름 없이 해 보는 중이라 기록은 남지 않아요.'))));
+}
+function nfAway() { if (nfRunning() && !NF.ch.paused && NF.ch.pause) { NF.ch.pause(); NF.ch.showPause(); } }
+document.addEventListener('visibilitychange', () => { if (document.hidden) nfAway(); });
+window.addEventListener('blur', nfAway);
+function nfAskQuit(onQuit) {
+  const C = NF.ch, wasPaused = C.paused; C.pause();
+  const keep = () => { if (wasPaused) C.showPause(); else C.resume(); };
+  nfConfirm('1분 도전을 그만할까요?', '지금 기록은 남지 않아요.', '그만하기', '계속하기', () => { C.done = true; nfStopTimer(); onQuit(); }, keep);
+}
+function nfViewChResult() {
+  setTimeout(fitTitles, 0);
+  const r = NF.chResult;
+  if (!r) return viewHome();
+  let praise = '끝까지 잘했어요!';
+  if (r.lines === 0) praise = '괜찮아요! 천천히 정확하게 쳐 보면 맞힌 줄이 늘어요.';
+  else if (!r.prev && nfSigned()) praise = '첫 1분 도전 완료!';
+  else if (r.better && r.prev) praise = '최고 기록을 넘었어요! (이전 ' + r.prev.lines + '줄)';
+  const best = nfSigned() ? (nfBest() || r) : null;
+  return h('div', { class: 'stack' },
+    h('div', { class: 'result-head stack' }, h('h1', {}, '1분 도전 끝!'), h('p', { class: 'praise' }, praise, h('span', { class: 'result-tag' }, '1분 도전'))),
+    h('div', { class: 'big-stats' },
+      h('div', { class: 'stat' }, tyLab('count', '맞힌 줄'), h('strong', {}, r.lines + '줄')),
+      h('div', { class: 'stat' }, tyLab('cpm', '타수 (1분)'), h('strong', {}, r.cpm + '타')),
+      h('div', { class: 'stat' }, tyLab('acc', '내 최고 기록'), h('strong', {}, best ? best.lines + '줄 · ' + best.cpm + '타' : '-'))),
+    !nfSigned() ? h('p', { class: 'note', style: 'text-align:center' }, '이름 없이 해 봐서 기록은 저장되지 않았어요.')
+      : r.saved === false ? h('p', { class: 'msg', style: 'text-align:center' }, '이 브라우저에서는 기록을 저장할 수 없어요. 연습은 그대로 할 수 있어요.') : null,
+    h('div', { class: 'row', style: 'justify-content:center' },
+      h('button', { class: 'btn primary', type: 'button', onclick: () => { if (nfOnce('again', 1000)) { NF.ch = null; go('nf-ch'); } } }, '다시 하기'),
+      h('button', { class: 'btn ghost', type: 'button', onclick: () => go('home') }, '내 연습방')));
+}
+
+/* ---------- 내 기록: 칭찬 상장 + 기록 옮기기 ---------- */
+function nfRecordsExtra() {
+  if (!nfSigned()) return h('section', { class: 'card stack' }, h('h2', {}, '칭찬 상장 · 기록 옮기기'),
+    h('p', { class: 'nf-p' }, '이름을 고르면 상장과 기록 옮기기를 쓸 수 있어요.'),
+    h('div', { class: 'row' }, h('button', { class: 'btn primary', type: 'button', onclick: () => { state.profile = null; openPicker('records'); } }, '로그인')));
+  const has = !!nfCertPick();
+  const msgBox = h('div', { id: 'nf-rec-msg', 'aria-live': 'polite' });
+  if (NF.recMsg) { msgBox.append(h('p', { class: NF.recMsg.bad ? 'nf-bad' : 'nf-ok' }, NF.recMsg.text)); NF.recMsg = null; }
+  const imp = h('button', { class: 'btn nf-white', type: 'button', id: 'nf-imp', onclick: () => { if (!nfImporting) document.getElementById('nf-file').click(); } }, '기록 불러오기');
+  return h('div', { class: 'stack' },
+    h('section', { class: 'nf-cert-box stack', 'aria-label': '칭찬 상장' }, h('h2', {}, '칭찬 상장'),
+      has ? h('p', { class: 'nf-p' }, '가장 좋은 기록으로 상장을 만들어요. 인쇄하거나 그림으로 저장할 수 있어요.') : h('p', { class: 'nf-p' }, '연습 기록이 생기면 상장을 만들 수 있어요.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn primary', type: 'button', disabled: !has, onclick: () => go('nf-cert') }, '상장 만들기'),
+        has ? null : h('button', { class: 'btn nf-white', type: 'button', onclick: () => go('home') }, '내 연습방'))),
+    h('section', { class: 'card stack', 'aria-label': '기록 옮기기' }, h('h2', {}, '기록 옮기기'),
+      h('p', { class: 'nf-p' }, '다른 컴퓨터에서도 내 기록을 이어 보고 싶을 때 써요. ', h('b', {}, '기록 내려받기'), '로 파일을 저장하고, 다른 컴퓨터에서 ', h('b', {}, '기록 불러오기'), '로 그 파일을 골라요.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn primary', type: 'button', onclick: nfExport }, '기록 내려받기'), imp),
+      msgBox,
+      h('p', { class: 'note' }, '불러오면 지금 기록에 더해지고, 지워지지 않아요. 똑같은 기록은 한 번만 들어가요.')));
+}
+function nfRecMsg(text, bad) { const el = document.getElementById('nf-rec-msg'); if (el) el.replaceChildren(h('p', { class: bad ? 'nf-bad' : 'nf-ok' }, text)); }
+let nfDlCap;
+function nfDownloadsCap() {
+  if (nfDlCap !== undefined) return Promise.resolve(nfDlCap);
+  if (!window.claude || typeof window.claude.use !== 'function') { nfDlCap = null; return Promise.resolve(null); }
+  return window.claude.use('downloads').then(d => (nfDlCap = d || null), () => (nfDlCap = null));
+}
+async function nfDownload(blob, name) {   // 'saved' | 'declined'
+  const cap = await nfDownloadsCap();
+  if (cap) {
+    try { await cap.save({ filename: name, data: blob }); return 'saved'; }
+    catch (e) { if (e && (e.code === 'declined' || e.code === 'rate_limited')) return 'declined'; throw e; }
+  }
+  const url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  return 'saved';
+}
+function nfExport() {
+  const recs = myRecords();
+  if (!recs.length && !nfBest()) { nfRecMsg('아직 내려받을 기록이 없어요. 연습을 먼저 해 보세요.', true); return; }
+  if (!nfOnce('export', 2000)) return;
+  const data = { app: 'tadadak', version: 1, exportedAt: Date.now(), name: state.profile.name, records: recs, challengeBest: nfBest() };
+  nfDownload(new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' }), '타다닥-' + state.profile.name + '-기록-' + nfYmd(new Date()) + '.json')
+    .then(r => nfRecMsg(r === 'saved' ? '기록 파일을 저장했어요. 내려받은 파일에서 찾을 수 있어요.' : '저장을 취소했어요. 다시 누르면 저장할 수 있어요.'))
+    .catch(() => nfRecMsg('파일을 만들지 못했어요. 다시 한 번 눌러 주세요.', true));
+}
+let nfImporting = false;
+const nfKey = r => [recType(r), r.date, r.songId || '', r.stage == null ? '' : r.stage, r.mode || '', r.level || '', r.lang || ''].join('|');
+const nfValid = r => r && typeof r === 'object' && ['jari', 'gasa', 'rhythm', undefined].includes(r.type) && typeof r.date === 'number';
+function nfImport(file) {
+  if (!file || !nfSigned()) return;
+  nfImporting = true; const btn = document.getElementById('nf-imp'); if (btn) btn.disabled = true;
+  const done = () => { nfImporting = false; const b = document.getElementById('nf-imp'); if (b) b.disabled = false; };
+  const notOurs = () => { nfRecMsg("이 파일은 타다닥 기록 파일이 아니에요. '타다닥-이름-기록'으로 시작하는 파일을 골라 주세요.", true); done(); };
+  const fr = new FileReader();
+  fr.onerror = notOurs;
+  fr.onload = () => {
+    let d; try { d = JSON.parse(fr.result); } catch (e) { return notOurs(); }
+    if (!d || d.app !== 'tadadak' || !Array.isArray(d.records) || !d.records.every(nfValid)) return notOurs();
+    const apply = () => {
+      const pid = state.profile.id, S = nfSettings();
+      const oldList = store.records[pid], oldBest = S.challenge[pid];
+      const list = (oldList || []).slice(), have = new Set(list.map(nfKey));
+      let added = 0, skipped = 0;
+      d.records.forEach(r => { const k = nfKey(r); if (have.has(k)) skipped++; else { have.add(k); list.push(r); added++; } });
+      list.sort((a, b) => a.date - b.date);
+      let dropped = 0; if (list.length > 1000) { dropped = list.length - 1000; list.splice(0, dropped); }
+      const cb = d.challengeBest, mine = nfBest();
+      let bestUp = false;
+      if (cb && typeof cb.lines === 'number' && (!mine || cb.lines > mine.lines || (cb.lines === mine.lines && cb.cpm > mine.cpm))) { S.challenge[pid] = cb; bestUp = true; }
+      if (!added && !bestUp) { nfRecMsg('새로 더할 기록이 없어요. 이미 모두 들어 있어요.'); return done(); }
+      store.records[pid] = list;
+      if (!nfSave()) {   // 저장이 안 되면 불러오기 전으로
+        if (oldList) store.records[pid] = oldList; else delete store.records[pid];
+        if (oldBest) S.challenge[pid] = oldBest; else delete S.challenge[pid];
+        nfRecMsg('기록을 저장하지 못했어요. 브라우저 저장 공간을 확인해 주세요.', true); return done();
+      }
+      let t = '기록 ' + added + '개를 더했어요. 원래 있던 기록은 그대로예요.';
+      if (skipped) t += ' (같은 기록 ' + skipped + '개는 건너뛰었어요)';
+      if (bestUp) t += ' 1분 도전 최고 기록도 바뀌었어요.';
+      if (dropped) t += ' 기록이 많아서 가장 오래된 기록 ' + dropped + '개는 빠졌어요.';
+      NF.recMsg = { text: t }; done(); render();
+    };
+    if (d.name && d.name !== state.profile.name) nfConfirm('다른 이름의 기록이에요', d.name + ' 이름의 기록이에요. 지금 이름(' + state.profile.name + ')에 더할까요?', '더하기', '취소', apply, () => { nfRecMsg('불러오기를 취소했어요. 아무것도 바뀌지 않았어요.'); done(); });
+    else apply();
+  };
+  fr.readAsText(file);
+}
+(function () {
+  const f = h('input', { type: 'file', id: 'nf-file', accept: '.json,application/json', hidden: true });
+  f.addEventListener('change', (e) => { const file = e.target.files[0]; e.target.value = ''; nfImport(file); });
+  document.body.append(f);
+})();
+
+function nfCertPick() {
+  const recs = myRecords();
+  const gasa = recs.filter(r => recType(r) === 'gasa');
+  if (gasa.length) { const b = gasa.slice().sort((a, b) => (b.cpm || 0) - (a.cpm || 0) || (b.acc || 0) - (a.acc || 0) || b.date - a.date)[0]; const s = songById(b.songId); return { small: '노래가사 타자연습 · ' + (s ? s.title : '노래'), big: '1분에 ' + b.cpm + '타' }; }
+  const rh = recs.filter(r => r.type === 'rhythm');
+  if (rh.length) { const b = rh.slice().sort((a, b) => (b.score || 0) - (a.score || 0) || b.date - a.date)[0]; const s = RHYTHM_SONGS.find(x => x.id === b.songId); return { small: ('마우스 리듬게임 · ' + (s ? s.title : '노래') + ' ' + (NF_RH_STAGE[b.stage] || '')).trim(), big: b.score + '점' }; }
+  const cb = nfBest(); if (cb) return { small: '1분 도전', big: '1분에 ' + cb.lines + '줄 (' + cb.cpm + '타)' };
+  const j = recs.filter(r => r.type === 'jari');
+  if (j.length) { const m = Math.max(...j.map(r => r.stage || 1)); return { small: '자리연습', big: m + '단계 ' + (JARI_STAGES[m - 1] ? JARI_STAGES[m - 1].name : '') + '까지 연습' }; }
+  return null;
+}
+function nfViewCert() {
+  const p = nfSigned() ? nfCertPick() : null;
+  if (!p) { state.screen = 'records'; return viewRecords(); }
+  const d = new Date();
+  NF.certData = { ...p, name: state.profile.name, date: d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일' };
+  const nameEl = h('div', { class: 'nf-c-name' }, h('span', {}, '이름'), state.profile.name);
+  setTimeout(() => { let f = 6.2; while (nameEl.isConnected && nameEl.scrollWidth > nameEl.parentElement.clientWidth * 0.86 && f > 3) { f -= 0.3; nameEl.style.fontSize = f + 'cqw'; } }, 0);
+  const msg = h('div', { id: 'nf-cert-msg', 'aria-live': 'polite', style: 'text-align:center' });
+  return h('div', { class: 'stack' },
+    h('button', { class: 'back', type: 'button', onclick: () => go('records') }, '← 내 기록'),
+    h('div', {}, h('h1', { class: 'big-title' }, '칭찬 상장'), h('p', { class: 'lead' }, '가장 좋은 기록으로 상장을 만들었어요. 인쇄하거나 그림으로 저장할 수 있어요.')),
+    h('div', { class: 'nf-cert-wrap' }, h('div', { class: 'nf-cert', role: 'img', 'aria-label': '칭찬 상장, ' + state.profile.name + ', ' + p.small + ' ' + p.big },
+      h('div', { class: 'nf-cert-in' },
+        h('div', { class: 'nf-c-title' }, '칭찬 상장'), nameEl,
+        h('p', { class: 'nf-c-body' }, '위 사람은 타다닥에서 꾸준히 연습하여', h('br'), '아래와 같이 멋진 기록을 세웠기에', h('br'), '이 상장을 드립니다.'),
+        h('div', { class: 'nf-c-best' }, h('small', {}, p.small), h('strong', {}, p.big)),
+        h('div', { class: 'nf-c-date' }, NF.certData.date),
+        h('div', { class: 'nf-c-seal', 'aria-hidden': 'true' }, '타다닥')))),
+    h('div', { class: 'row', style: 'justify-content:center' },
+      h('button', { class: 'btn primary', type: 'button', onclick: nfPrint }, '인쇄하기'),
+      h('button', { class: 'btn', type: 'button', id: 'nf-png', onclick: nfPng }, '그림으로 저장')),
+    msg,
+    h('p', { class: 'note', style: 'text-align:center' }, '가사 타자연습 최고 타수가 들어가요. 없으면 리듬게임 최고 점수 → 1분 도전 → 자리연습 순서로 들어가요.'));
+}
+function nfCertMsg(t, bad) { const el = document.getElementById('nf-cert-msg'); if (el) el.replaceChildren(...(t ? [h('p', { class: bad ? 'nf-bad' : 'nf-ok', style: 'display:inline-block' }, t)] : [])); }
+let nfPrinting = false;
+function nfPrint() {
+  if (nfPrinting) return; nfPrinting = true;
+  const reset = () => { nfPrinting = false; document.body.classList.remove('nf-printing'); };
+  document.body.classList.add('nf-printing');
+  window.addEventListener('afterprint', reset, { once: true }); setTimeout(reset, 1500);
+  try { window.print(); } catch (e) { reset(); nfCertMsg('인쇄 창을 열지 못했어요. 브라우저 메뉴의 인쇄를 써 보세요.', true); }
+}
+let nfDrawing = false;
+async function nfPng() {
+  if (nfDrawing) return; nfDrawing = true;
+  const btn = document.getElementById('nf-png'); if (btn) btn.disabled = true;
+  nfCertMsg('그림을 만들고 있어요…');
+  try {
+    try { await Promise.race([Promise.all([document.fonts.load('80px Jua'), document.fonts.load('700 40px Pretendard')]), new Promise(r => setTimeout(r, 1500))]); } catch (e) {}
+    const D = NF.certData, W = 1240, H = 1754, k = W / 560;
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const g = cv.getContext('2d'); if (!g) throw new Error('no canvas');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#FFC000'; const b = 14 * k;
+    g.fillRect(0, 0, W, b); g.fillRect(0, H - b, W, b); g.fillRect(0, 0, b, H); g.fillRect(W - b, 0, b, H);
+    const ins = 24 * k; g.strokeStyle = '#FFC000'; g.lineWidth = 2 * k; g.strokeRect(ins, ins, W - ins * 2, H - ins * 2);
+    const iw = W - ins * 2, u = iw / 100;
+    const TF = '"Jua", "Pretendard", sans-serif', BF = '"Pretendard", "Malgun Gothic", sans-serif';
+    const hasLS = 'letterSpacing' in g;
+    g.textAlign = 'center'; g.fillStyle = '#000';
+    let y = ins + 21 * u;
+    g.font = 12 * u + 'px ' + TF; if (hasLS) g.letterSpacing = (12 * u * 0.18) + 'px';
+    g.fillText('칭찬 상장', W / 2 + (hasLS ? 12 * u * 0.09 : 0), y);
+    if (hasLS) g.letterSpacing = '0px';
+    y += 16 * u;
+    let nf = 6.2 * u; const label = '이름  ', lf = 3.6 * u;
+    const fit = () => { g.font = '800 ' + nf + 'px ' + BF; const nw = g.measureText(D.name).width; g.font = '600 ' + lf + 'px ' + BF; return nw + g.measureText(label).width; };
+    while (fit() > iw * 0.8 && nf > 3 * u) nf -= 0.3 * u;
+    const total = fit(); g.font = '600 ' + lf + 'px ' + BF; const lw = g.measureText(label).width;
+    g.textAlign = 'left'; g.fillStyle = '#494949'; g.fillText(label, W / 2 - total / 2, y);
+    g.font = '800 ' + nf + 'px ' + BF; g.fillStyle = '#000'; g.fillText(D.name, W / 2 - total / 2 + lw, y);
+    g.textAlign = 'center';
+    g.font = '400 ' + 3.9 * u + 'px ' + BF; y += 8 * u + 3.9 * u * 1.4;
+    ['위 사람은 타다닥에서 꾸준히 연습하여', '아래와 같이 멋진 기록을 세웠기에', '이 상장을 드립니다.'].forEach((t, i) => g.fillText(t, W / 2, y + i * 3.9 * u * 1.8));
+    y += 2 * 3.9 * u * 1.8 + 8 * u;
+    g.font = '800 ' + 6.4 * u + 'px ' + BF; const w1 = g.measureText(D.big).width; g.font = '600 ' + 3.2 * u + 'px ' + BF; const w2 = g.measureText(D.small).width;
+    const bw = Math.max(w1, w2) + 12 * u, bh = 3 * u + 3.2 * u * 1.5 + 1 * u + 6.4 * u * 1.3 + 3 * u;
+    g.fillStyle = '#FFF4CC'; g.beginPath(); const r = 3 * u, x0 = W / 2 - bw / 2;
+    g.moveTo(x0 + r, y); g.arcTo(x0 + bw, y, x0 + bw, y + bh, r); g.arcTo(x0 + bw, y + bh, x0, y + bh, r); g.arcTo(x0, y + bh, x0, y, r); g.arcTo(x0, y, x0 + bw, y, r); g.closePath(); g.fill();
+    g.fillStyle = '#494949'; g.font = '600 ' + 3.2 * u + 'px ' + BF; g.fillText(D.small, W / 2, y + 3 * u + 3.2 * u * 1.1);
+    g.fillStyle = '#000'; g.font = '800 ' + 6.4 * u + 'px ' + BF; g.fillText(D.big, W / 2, y + 3 * u + 3.2 * u * 1.5 + 1 * u + 6.4 * u);
+    g.font = '600 ' + 3.8 * u + 'px ' + BF; g.fillText(D.date, W / 2, H - ins - 8 * u);
+    g.save(); g.translate(W - ins - 15.5 * u, H - ins - 13.5 * u); g.rotate(-12 * Math.PI / 180);
+    g.fillStyle = '#FFC000'; g.beginPath(); g.arc(0, 0, 8.5 * u, 0, Math.PI * 2); g.fill();
+    g.fillStyle = '#000'; g.font = 4.4 * u + 'px ' + TF; g.textBaseline = 'middle'; g.fillText('타다닥', 0, 0); g.restore();
+    const blob = await new Promise((res, rej) => { try { cv.toBlob(bl => bl ? res(bl) : rej(new Error('blob')), 'image/png'); } catch (e) { rej(e); } });
+    const res = await nfDownload(blob, '타다닥-상장-' + D.name + '-' + nfYmd(new Date()) + '.png');
+    nfCertMsg(res === 'saved' ? '그림을 저장했어요. 내려받은 파일에서 찾을 수 있어요.' : '저장을 취소했어요. 다시 누르면 저장할 수 있어요.');
+  } catch (e) {
+    nfCertMsg('그림으로 저장하지 못했어요. [인쇄하기]로 PDF 저장을 해 보세요.', true);
+  }
+  setTimeout(() => { nfDrawing = false; const b2 = document.getElementById('nf-png'); if (b2) b2.disabled = false; }, 1200);
+}
+
+/* ---------- 화면 이동 연결 ---------- */
+const nfAppGo = go;
+go = function (screen) {
+  if (!nfOn() && /^nf-/.test(screen)) screen = 'home';   // 새 기능은 설치한 앱에서만
+  if (nfRunning() && screen !== 'nf-ch-result') { nfAskQuit(() => { NF.ch = null; nfAppGo(screen); }); return; }
+  if (screen === 'nf-ch') { if (!state.profile) { openPicker('nf-ch'); return; } NF.ch = null; }
+  if (screen === 'nf-reco') { if (!nfSigned()) screen = 'home'; else nfInitReco(); }   // 84. 추천은 로그인한 사람만
+  if (screen === 'nf-cert' && !nfSigned()) screen = 'records';
+  nfAppGo(screen);
+};
+// 1분 도전 중 맨 위 메뉴·로고·로그아웃을 누르면 먼저 물어봐요
+document.addEventListener('click', (e) => {
+  if (!nfRunning()) return;
+  const t = e.target.closest('#brand, #nav-guide, #nav-faq, #nav-start, #who, #auth');
+  if (!t) return;
+  e.preventDefault(); e.stopPropagation();
+  nfAskQuit(() => { NF.ch.done = true; t.click(); });
+}, true);
+
+if (/[?&]install=1/.test(location.search) && !isStandalone()) state.screen = 'install';   // 홈페이지의 [지금 설치하기]로 왔을 때
+if (isStandalone()) state.screen = 'home';   // 설치한 앱은 소개를 건너뛰고 내 연습방부터 열려요 (2026-11-27, 한 주소로 합침)
 applyScale(store.settings.scale || 1);
 render();
 
@@ -2846,4 +3443,5 @@ render();
   update();
 })();
 </script>
+<script>if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));</script>
 </html>
